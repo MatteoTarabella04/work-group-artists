@@ -19,5 +19,5 @@ Route::get('/',[PageController::class,'index'] );
 Route::get('/about',[PageController::class,'about'] );
 Route::get('/contacts',[PageController::class,'contacts'] );
 
-Route::resource('/admin/artists',ArtistController::class);
+Route::resource('/admin/artists', ArtistController::class);
 

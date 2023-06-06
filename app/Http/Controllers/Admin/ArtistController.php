@@ -8,11 +8,6 @@ use App\Http\Controllers\Controller;
 
 class ArtistController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $artists = Artist::all();
@@ -48,7 +43,7 @@ class ArtistController extends Controller
      */
     public function show(Artist $artist)
     {
-        //
+        return view('admin.artists.show', compact('artist'));
     }
 
     /**

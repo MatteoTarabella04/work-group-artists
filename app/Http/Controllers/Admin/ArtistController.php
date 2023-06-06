@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\UpdateArtistRequest;
 use App\Models\Artist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -58,7 +59,7 @@ class ArtistController extends Controller
      */
     public function edit(Artist $artist)
     {
-        //
+        return view('admin.artists.edit', compact('artist'));
     }
 
     /**
@@ -68,9 +69,13 @@ class ArtistController extends Controller
      * @param  \App\Models\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Artist $artist)
+    public function update(UpdateArtistRequest $request, Artist $artist)
     {
-        //
+        $val_data = $request->validated();
+
+        $artist->update($val_data);
+
+        return to_route('artists.index')->with('message', 'artist updated successfully');
     }
 
     /**
@@ -81,6 +86,7 @@ class ArtistController extends Controller
      */
     public function destroy(Artist $artist)
     {
-        //
+        $artist->delete();
+        return to_route('artists.index')->with('message', 'artist deleted!!!');
     }
 }

@@ -27,14 +27,31 @@
                         <tr class="">
                             <td scope="row">{{ $artist->id }}</td>
                             <td scope="row">
-                                <img src="{{ $artist->id }}" alt="{{ $artist->name }}">
+                                <img height="70" src="{{ $artist->image }}" alt="{{ $artist->name }}">
                             </td>
                             <td scope="row">{{ $artist->name }}</td>
                             <td scope="row">{{ $artist->genre }}</td>
                             <td scope="row">
-                                <a href="{{ route('artists.show', $artist->id) }}">View</a>
-                                <a href="">Edit</a>
-                                <a href="">Delete</a>
+                                <div class="d-flex gap-3">
+                                    <a href="{{ route('artists.show', $artist->id) }}">
+                                        <button class="btn btn-outline-primary">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
+                                    <a href="{{ route('artists.edit', $artist->id) }}">
+                                        <button class="btn btn-outline-warning">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
+                                    <form action="{{ route('artists.destroy', $artist->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button class="btn btn-outline-danger" type="submit">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @empty

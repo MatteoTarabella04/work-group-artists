@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArtistController;
 use App\Http\Controllers\Guests\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[PageController::class,'index'] );
 Route::get('/about',[PageController::class,'about'] );
 Route::get('/contacts',[PageController::class,'contacts'] );
+
+Route::resource('/admin/artists',ArtistController::class);
 

@@ -26,7 +26,7 @@
                     </td>
                     <td scope="row">{{$artist->genre}}</td>
                     <td scope="row">
-                        <a href="">View</a>
+                        <a href="{{route('artists.show', $artist->id)}}">View</a>
                         <a href="">Edit</a>
                         <a href="">Delete</a>
                     </td>

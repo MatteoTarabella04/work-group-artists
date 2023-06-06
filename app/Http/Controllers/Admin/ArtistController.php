@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Artist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreArtistRequest;
 
 class ArtistController extends Controller
 {
     public function index()
     {
         $artists = Artist::all();
-        return view('admin.artists.index',compact('artists'));
+        return view('admin.artists.index', compact('artists'));
     }
 
     /**
@@ -21,7 +22,7 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.artists.create');
     }
 
     /**
@@ -30,9 +31,12 @@ class ArtistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArtistRequest $request)
     {
-        //
+        $val_data = $request->validated();
+        Artist::create($val_data);
+
+        return to_route('artists.index')->with('message', 'artist created successfully');
     }
 
     /**

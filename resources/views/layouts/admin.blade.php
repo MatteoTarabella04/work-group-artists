@@ -21,9 +21,9 @@
 <body>
 
     <nav class="nav justify-content-center  ">
-      <a class="nav-link" href="#" aria-current="page">Home</a>
-      <a class="nav-link" href="#">Add artist</a>
-      <a class="nav-link" href="#">Exit Admin</a>
+        <a class="nav-link" href="#" aria-current="page">Home</a>
+        <a class="nav-link" href="{{ route('artists.create') }}">Add artist</a>
+        <a class="nav-link" href="#">Exit Admin</a>
     </nav>
 
     <main class="bg-light">
@@ -31,7 +31,7 @@
         @yield('content')
     </main>
 
-    
+
 
 </body>
 

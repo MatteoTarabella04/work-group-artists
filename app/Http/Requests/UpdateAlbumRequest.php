@@ -13,7 +13,7 @@ class UpdateAlbumRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,12 @@ class UpdateAlbumRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            //
+            "name" => 'required|max:100',
+            "cover" => 'max:200',
+            "release_date" => 'date',
+            "artist_id" => 'nullable'
         ];
     }
 }

@@ -55,6 +55,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $album->name }}</h5>
                         <h5 class="card-title">{{ $album->artist?->name }}</h5>
+                        <a class="btn btn-primary" href="albums/{{ $album->id }}/edit" role="button">Edit</a>
                     </div>
                 </div>
 

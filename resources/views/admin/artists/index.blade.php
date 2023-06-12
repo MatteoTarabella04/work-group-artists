@@ -19,6 +19,7 @@
                         <th scope="col">Image</th>
                         <th scope="col">Name</th>
                         <th scope="col">Genre</th>
+                        <th scope="col">Album N°</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -31,6 +32,7 @@
                             </td>
                             <td scope="row">{{ $artist->name }}</td>
                             <td scope="row">{{ $artist->genre }}</td>
+                            <td scope="row">{{ $artist->albums->count() }}</td>
                             <td scope="row">
                                 <div class="d-flex gap-3">
                                     <a href="{{ route('artists.show', $artist->id) }}">

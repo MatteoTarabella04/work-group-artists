@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Album;
 use App\Http\Requests\StoreAlbumRequest;
 use App\Http\Requests\UpdateAlbumRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Artist;
 
 class AlbumController extends Controller
 {
@@ -15,7 +17,9 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        $albums = Album::all();
+        $artists = Artist::all();
+        return view('admin.albums.index', compact('albums', 'artists'));
     }
 
     /**
@@ -25,7 +29,6 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -36,7 +39,13 @@ class AlbumController extends Controller
      */
     public function store(StoreAlbumRequest $request)
     {
-        //
+        $val_data = $request->validated();
+        $slug = Album::generateSlug($val_data['name']);
+        $val_data['slug'] = $slug;
+
+        Album::create($val_data);
+
+        return to_route('albums.index')->with('message', 'Album added successfully');
     }
 
     /**
@@ -58,7 +67,6 @@ class AlbumController extends Controller
      */
     public function edit(Album $album)
     {
-        //
     }
 
     /**

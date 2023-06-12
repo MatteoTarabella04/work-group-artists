@@ -98,6 +98,7 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-        //
+        $album->delete();
+        return to_route('albums.index')->with('message', 'Album deleted successfully');
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Genre;
 use App\Http\Requests\StoreGenreRequest;
 use App\Http\Requests\UpdateGenreRequest;
+use App\Http\Controllers\Controller;
 
 class GenreController extends Controller
 {
@@ -15,7 +16,9 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
+        $genres = Genre::all();
+
+        return view('admin.genres.index', compact('genres'));
     }
 
     /**
@@ -36,7 +39,14 @@ class GenreController extends Controller
      */
     public function store(StoreGenreRequest $request)
     {
-        //
+        $val_data = $request->validated();
+
+        $slug = Genre::generateSlug($val_data['name']);
+        $val_data['slug'] = $slug;
+
+        Genre::create($val_data);
+
+        return to_route('genres.index')->with('message', 'Genre added successfully');
     }
 
     /**
@@ -70,7 +80,14 @@ class GenreController extends Controller
      */
     public function update(UpdateGenreRequest $request, Genre $genre)
     {
-        //
+        $val_data = $request->validated();
+
+        $slug = Genre::generateSlug($val_data['name']);
+        $val_data['slug'] = $slug;
+
+        $genre->update($val_data);
+
+        return to_route('genres.index')->with('message', 'Genre updated successfully');
     }
 
     /**
@@ -81,6 +98,7 @@ class GenreController extends Controller
      */
     public function destroy(Genre $genre)
     {
-        //
+        $genre->delete();
+        return to_route('genres.index')->with('message', 'Genre deleted successfully');
     }
 }

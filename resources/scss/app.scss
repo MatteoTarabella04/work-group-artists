@@ -7,3 +7,12 @@ img {
 .image {
     height: 50px
 }
+
+a {
+    text-decoration: none;
+}
+
+.artist:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

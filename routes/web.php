@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\ArtistController;
+use App\Http\Controllers\Admin\GenreController;
 use App\Http\Controllers\Guests\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,4 @@ Route::get('/contacts', [PageController::class, 'contacts']);
 
 Route::resource('/admin/artists', ArtistController::class);
 Route::resource('/admin/albums', AlbumController::class);
+Route::resource('/admin/genres', GenreController::class);

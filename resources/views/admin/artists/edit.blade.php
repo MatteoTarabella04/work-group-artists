@@ -34,7 +34,7 @@
                 <label for="genre" class="form-label">Genre</label>
                 <select class="form-select form-select-lg" name="genre" id="genre">
 
-                    {{-- to chechk --}}
+                    -- to chechk --
                     <option selected value="{{ old('genre', $artist->genre) }}">{{ old('genre', $artist->genre) }}</option>
 
                     <option value="rock">Rock</option>

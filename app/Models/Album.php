@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
 class Album extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','slug','cover','release_date','artist_id'];
+    protected $fillable = ['name','slug','cover','release_date','artist_id', 'genre_id'];
 
 public static function generateSlug($name)
     {
@@ -21,5 +22,10 @@ public static function generateSlug($name)
          public function artist(): BelongsTo
     {
         return $this->belongsTo(Artist::class);
+    }
+
+    public function genres(): BelongsToMany 
+    {
+        return $this->belongsToMany(Genre::class);
     }
 }

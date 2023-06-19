@@ -28,5 +28,5 @@ class Genre extends Model
 TODO
 php artisan migrate
 seed
-finire il collegamento delle releazioni e proseguire con le task
+ 
 */
